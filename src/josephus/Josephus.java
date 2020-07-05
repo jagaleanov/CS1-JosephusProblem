@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package josefus;
+package josephus;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author jgale
  */
-public class Josefus {
+public class Josephus {
 
     Node head;
     ListOperations list;
@@ -20,10 +20,10 @@ public class Josefus {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Josefus cicle = new Josefus();
+        Josephus cicle = new Josephus();
     }
 
-    public Josefus() {
+    public Josephus() {
         
         this.head = null;
 

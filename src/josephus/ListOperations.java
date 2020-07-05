@@ -1,4 +1,4 @@
-package josefus;
+package josephus;
 
 public class ListOperations {
 
