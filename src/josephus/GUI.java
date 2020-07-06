@@ -15,15 +15,13 @@ public class GUI extends javax.swing.JFrame {
 
     public GUI() {
         initComponents();
+        setTitle("Problema de Josephus");
         setLocationRelativeTo(null);
 
         model = new DefaultTableModel();
         model.addColumn("Nombre");
-
         tabla = new JTable(model);
-
         scroll = new JScrollPane(tabla);
-
         panelIn.add(scroll);
     }
 
