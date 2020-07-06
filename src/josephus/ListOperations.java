@@ -1,6 +1,15 @@
 package josephus;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+
 public class ListOperations {
+
+    JTextArea areaOut;
+
+    public ListOperations(JTextArea area) {
+        this.areaOut = area;
+    }
 
     public Node findTail(Node head) {
         Node tail = head;
@@ -27,10 +36,8 @@ public class ListOperations {
             Node newNode = new Node(data);
             newNode.setNext(newNode);
             head = newNode;
-
         }
 
-        //print(head);
         return head;
     }
 
@@ -44,28 +51,33 @@ public class ListOperations {
             head = next;
             tail.setNext(head);
 
-            System.out.println("Sacando de la cola a "+dequeued.getData());
-            
+            areaOut.append("Sacando de la cola a " + dequeued.getData() + "\n");
+            System.out.println("Sacando de la cola a " + dequeued.getData());
+
             return head;
         } else {
             return null;
         }
     }
 
-    public void josephus(Node head, int size) {
-            System.out.println("Iniciando Josephus con ciclo de "+size);
+    public void josephus(Node head, int steps) {
+        areaOut.append("Iniciando Josephus con ciclo de " + steps + " pasos\n");
+        //System.out.println("Iniciando Josephus con ciclo de " + size);
         while (!head.getNext().equals(head)) {
             Node selected = head;
-            
-            for (int i = 0; i < size-1; i++) {
+
+            for (int i = 0; i < steps - 1; i++) {
                 selected = selected.getNext();
             }
 
             head = deQueue(selected);
             print(head);
         }
-        
-        System.out.println("finalizado " + head.getData());
+
+        JOptionPane.showMessageDialog(null, "El ganador es: " + head.getData());
+        areaOut.append("PROCESO FINALIZADO\n");
+        areaOut.append("El ganador es: " + head.getData());
+        //System.out.println("finalizado " + head.getData());
     }
 
     public void print(Node head) {
@@ -73,12 +85,31 @@ public class ListOperations {
 
         if (q != null) {
             do {
+                areaOut.append(q.getData() + " ");
                 System.out.print(q.getData() + " ");
                 q = q.getNext();
             } while (q != head);
         }
 
+        areaOut.append("\n");
         System.out.println();
     }
 
+    public String listToString(Node head) {
+        String string = "";
+        Node q = head;
+
+        if (q != null) {
+            string += q.getData();
+            q = q.getNext();
+
+            while (q.getData() != head.getData()) {
+                string += q.getData();
+
+                q = q.getNext();
+            }
+        }
+
+        return string;
+    }
 }
